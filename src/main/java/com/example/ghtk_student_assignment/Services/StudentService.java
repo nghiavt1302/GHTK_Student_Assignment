@@ -1,5 +1,6 @@
 package com.example.ghtk_student_assignment.Services;
 
+import com.example.ghtk_student_assignment.Entity.Request.StudentSearchRequest;
 import com.example.ghtk_student_assignment.Entity.StudentEntity;
 import com.example.ghtk_student_assignment.Model.Student;
 import com.example.ghtk_student_assignment.Repository.StudentRepository;
@@ -22,7 +23,7 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public List<Student> getListStudent(){
+    public List<Student> getAllStudent(){
         List<Student> result = new ArrayList<>();
         List<StudentEntity> entities = studentRepository.findAll();
         if (entities != null && entities.size() > 0){
@@ -31,30 +32,44 @@ public class StudentService {
                 item.setStt(x.getStt());
                 item.setSchool(x.getSchool());
                 item.setDist(x.getDist());
-                item.setStd_id(x.getStd_id());
-                item.setStd_class(x.getStd_class());
+                item.setStd_id(x.getStudentId());
+                item.setStd_class(x.getStudentClass());
                 item.setFullname(x.getFullname());
-                item.setBorn_day(x.getBorn_day());
-                item.setBorn_month(x.getBorn_month());
-                item.setBorn_year(x.getBorn_year());
+                item.setBorn_day(x.getBornDay());
+                item.setBorn_month(x.getBornMonth());
+                item.setBorn_year(x.getBornYear());
                 item.setGender(x.getGender());
-                item.setBorn_location(x.getBorn_location());
+                item.setBorn_location(x.getBornLocation());
                 item.setEthnic(x.getEthnic());
-                item.setHousehold_address(x.getHousehold_address());
+                item.setHousehold_address(x.getHouseholdAddress());
                 item.setPhone(x.getPhone());
-                item.setGrade_1(x.getGrade_1());
-                item.setGrade_2(x.getGrade_2());
-                item.setGrade_3(x.getGrade_3());
-                item.setGrade_4(x.getGrade_4());
-                item.setGrade_5(x.getGrade_5());
-                item.setTotal_grade(x.getTotal_grade());
-                item.setPri_point(x.getPri_point());
-                item.setTotal_grade_addmission(x.getTotal_grade_addmission());
+                item.setGrade_1(x.getGrade1());
+                item.setGrade_2(x.getGrade2());
+                item.setGrade_3(x.getGrade3());
+                item.setGrade_4(x.getGrade4());
+                item.setGrade_5(x.getGrade5());
+                item.setTotal_grade(x.getTotalGrade());
+                item.setPri_point(x.getPriPoint());
+                item.setTotal_grade_addmission(x.getTotalGradeAddmission());
                 item.setNotes(x.getNotes());
                 result.add(item);
             });
         }
         return result;
+    }
+
+    public List<StudentEntity> searchStudent(StudentSearchRequest request){
+        List<StudentEntity> response;
+        String fullname = request.getFullname();
+        String std_id = request.getStudentId();
+        response = studentRepository.findAllByStudentIdAndFullname(std_id, fullname);
+        if (response.isEmpty()) {
+            response = studentRepository.findAllByStudentId(std_id);
+            if (response.isEmpty()) {
+                response = studentRepository.findAllByFullname(fullname);
+            }
+        }
+        return response;
     }
 
     private String getCellValue(Row row, int cellNo) {
@@ -107,25 +122,25 @@ public class StudentService {
                 item.setStt(x.getStt());
                 item.setSchool(x.getSchool());
                 item.setDist(x.getDist());
-                item.setStd_id(x.getStd_id());
-                item.setStd_class(x.getStd_class());
+                item.setStudentId(x.getStd_id());
+                item.setStudentClass(x.getStd_class());
                 item.setFullname(x.getFullname());
-                item.setBorn_day(x.getBorn_day());
-                item.setBorn_month(x.getBorn_month());
-                item.setBorn_year(x.getBorn_year());
+                item.setBornDay(x.getBorn_day());
+                item.setBornMonth(x.getBorn_month());
+                item.setBornYear(x.getBorn_year());
                 item.setGender(x.getGender());
-                item.setBorn_location(x.getBorn_location());
+                item.setBornLocation(x.getBorn_location());
                 item.setEthnic(x.getEthnic());
-                item.setHousehold_address(x.getHousehold_address());
+                item.setHouseholdAddress(x.getHousehold_address());
                 item.setPhone(x.getPhone());
-                item.setGrade_1(x.getGrade_1());
-                item.setGrade_2(x.getGrade_2());
-                item.setGrade_3(x.getGrade_3());
-                item.setGrade_4(x.getGrade_4());
-                item.setGrade_5(x.getGrade_5());
-                item.setTotal_grade(x.getTotal_grade());
-                item.setPri_point(x.getPri_point());
-                item.setTotal_grade_addmission(x.getTotal_grade_addmission());
+                item.setGrade1(x.getGrade_1());
+                item.setGrade2(x.getGrade_2());
+                item.setGrade3(x.getGrade_3());
+                item.setGrade4(x.getGrade_4());
+                item.setGrade5(x.getGrade_5());
+                item.setTotalGrade(x.getTotal_grade());
+                item.setPriPoint(x.getPri_point());
+                item.setTotalGradeAddmission(x.getTotal_grade_addmission());
                 item.setNotes(x.getNotes());
                 entities.add(item);
             });

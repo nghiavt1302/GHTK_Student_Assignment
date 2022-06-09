@@ -1,5 +1,6 @@
 package com.example.ghtk_student_assignment.Controller;
 
+import com.example.ghtk_student_assignment.Entity.Request.StudentSearchRequest;
 import com.example.ghtk_student_assignment.Entity.StudentEntity;
 import com.example.ghtk_student_assignment.Model.Student;
 import com.example.ghtk_student_assignment.Services.StudentService;
@@ -12,16 +13,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/home")
-public class TestController {
+public class StudentController {
     @Autowired
     StudentService studentService;
-    @GetMapping("/getListStudent")
-    public List<Student> getListStudent(){
-        return studentService.getListStudent();
+    @GetMapping("/get-all-student")
+    public List<Student> getAllStudent(){
+        return studentService.getAllStudent();
     }
 
     @PostMapping("/import-excel")
     public List<StudentEntity> importExcelFile(@RequestParam("file") MultipartFile files)throws IOException {
         return studentService.importStudentFromExcel(files);
     }
+
+    @PostMapping("/search-student")
+    public List<StudentEntity> searchStudent(@RequestBody StudentSearchRequest request){
+        return studentService.searchStudent(request);
+    }
+
+//    @PostMapping("/import")
+//    public String importStudent()
 }

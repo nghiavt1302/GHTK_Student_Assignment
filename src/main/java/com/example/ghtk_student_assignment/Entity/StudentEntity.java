@@ -16,26 +16,40 @@ public class StudentEntity {
     private String school;
     private String dist;
     @Id
-    private String std_id;
+    @Column(name = "std_id")
+    private String studentId;
     @Column(name = "class")
-    private String std_class;
+    private String studentClass;
     private String fullname;
-    private Integer born_day;
-    private Integer born_month;
-    private Integer born_year;
+    @Column(name = "born_day")
+    private Integer bornDay;
+    @Column(name = "born_month")
+    private Integer bornMonth;
+    @Column(name = "born_year")
+    private Integer bornYear;
     private String gender;
-    private String born_location;
+    @Column(name = "born_location")
+    private String bornLocation;
     private String ethnic;
-    private String household_address;
+    @Column(name = "household_address")
+    private String householdAddress;
     private String phone;
-    private Integer grade_1;
-    private Integer grade_2;
-    private Integer grade_3;
-    private Integer grade_4;
-    private Integer grade_5;
-    private Integer total_grade;
-    private Integer pri_point;
-    private Integer total_grade_addmission;
+    @Column(name = "grade_1")
+    private Integer grade1;
+    @Column(name = "grade_2")
+    private Integer grade2;
+    @Column(name = "grade_3")
+    private Integer grade3;
+    @Column(name = "grade_4")
+    private Integer grade4;
+    @Column(name = "grade_5")
+    private Integer grade5;
+    @Column(name = "total_grade")
+    private Integer totalGrade;
+    @Column(name = "pri_point")
+    private Integer priPoint;
+    @Column(name = "total_grade_addmission")
+    private Integer totalGradeAddmission;
     private String notes;
 
 }

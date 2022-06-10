@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Result</h1>
+    <p th:text="'Student ID: ' + ${request.studentId}"></p>
+    <p th:text="'Fullname: ' + ${request.fullname}"></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>stt</th>
+                <th>school</th>
+                <th>dist</th>
+                <th>std_id</th>
+                <th>std_class</th>
+                <th>fullname</th>
+                <th>born_day</th>
+                <th>born_month</th>
+                <th>born_year</th>
+                <th>gender</th>
+                <th>born_location</th>
+                <th>ethnic</th>
+                <th>household_address</th>
+                <th>phone</th>
+                <th>grade_1</th>
+                <th>grade_2</th>
+                <th>grade_3</th>
+                <th>grade_4</th>
+                <th>grade_5</th>
+                <th>total_grade</th>
+                <th>pri_point</th>
+                <th>total_grade_addmission</th>
+                <th>notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${list}">
+                <td th:text=${row.stt}></td>
+                <td th:text=${row.school}></td>
+                <td th:text=${row.dist}></td>
+                <td th:text=${row.studentId}></td>
+                <td th:text=${row.studentClass}></td>
+                <td th:text=${row.fullname}></td>
+                <td th:text=${row.bornDay}></td>
+                <td th:text=${row.bornMonth}></td>
+                <td th:text=${row.bornYear}></td>
+                <td th:text=${row.gender}></td>
+                <td th:text=${row.bornLocation}></td>
+                <td th:text=${row.ethnic}></td>
+                <td th:text=${row.householdAddress}></td>
+                <td th:text=${row.phone}></td>
+                <td th:text=${row.grade1}></td>
+                <td th:text=${row.grade2}></td>
+                <td th:text=${row.grade3}></td>
+                <td th:text=${row.grade4}></td>
+                <td th:text=${row.grade5}></td>
+                <td th:text=${row.totalGrade}></td>
+                <td th:text=${row.priPoint}></td>
+                <td th:text=${row.totalGradeAddmission}></td>
+                <td th:text=${row.notes}></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="/search">Submit another message</a>
+</body>
+</html>

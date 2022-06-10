@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Student</title>
+</head>
+<body>
+<div>
+  <h1>Tìm kiếm học sinh</h1>
+  <form action="#" th:action="@{/search}" th:object="${request}" method="post">
+    <p>Student ID: <input type="text" th:field="*{studentId}" /></p>
+    <p>Fullname: <input type="text" th:field="*{fullname}" /></p>
+    <p><input type="submit" value="Submit"/>
+  </form>
+</div>
+</body>
+</html>

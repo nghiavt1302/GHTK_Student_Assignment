@@ -30,7 +30,4 @@ public class StudentController {
     public List<StudentEntity> searchStudent(@RequestBody StudentSearchRequest request){
         return studentService.searchStudent(request);
     }
-
-//    @PostMapping("/import")
-//    public String importStudent()
 }

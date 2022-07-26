@@ -52,4 +52,6 @@ public class StudentControllerUI {
         model.addAttribute("list",studentService.searchStudent(request));
         return "result";
     }
+
+
 }
